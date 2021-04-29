@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6E149C9B-88DA-4437-BB4D-BAC911913151}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>TechnicalShowcase</RootNamespace>
-    <AssemblyName>TechnicalShowcase</AssemblyName>
+    <RootNamespace>PhotoAlbum</RootNamespace>
+    <AssemblyName>PhotoAlbum</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>TechnicalShowcase.Program</StartupObject>
+    <StartupObject>PhotoAlbum.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

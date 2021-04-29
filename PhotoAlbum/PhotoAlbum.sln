@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAlbum", "TechnicalShowcase\PhotoAlbum.csproj", "{6E149C9B-88DA-4437-BB4D-BAC911913151}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAlbum_UnitTests", "TechnicalShowcaseUnitTests\PhotoAlbum_UnitTests.csproj", "{F4B42668-7BD6-4249-92ED-E82C0C63285E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAlbum", "PhotoAlbum\PhotoAlbum.csproj", "{6E149C9B-88DA-4437-BB4D-BAC911913151}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{6E149C9B-88DA-4437-BB4D-BAC911913151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E149C9B-88DA-4437-BB4D-BAC911913151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E149C9B-88DA-4437-BB4D-BAC911913151}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F4B42668-7BD6-4249-92ED-E82C0C63285E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4B42668-7BD6-4249-92ED-E82C0C63285E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F4B42668-7BD6-4249-92ED-E82C0C63285E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4B42668-7BD6-4249-92ED-E82C0C63285E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
