@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PhotoAlbum.Interfaces;
+using PhotoAlbum.Validators;
 
 namespace PhotoAlbum.ValidationHandler
 {
-    class ValidationHandler
+    public class ValidationHandler : IValidationHandler 
     {
-
-        public static bool CallAllValidators(string albumId)
+        public bool ValidateString(string stringToValidate, bool canBeEmpty)
         {
             bool passedValidation = false;
 
+            
 
             return passedValidation;
         }
