@@ -1,6 +1,6 @@
 ﻿using System;
+using PhotoAlbum.Controllers;
 using PhotoAlbum.Interfaces;
-using PhotoAlbum.ValidationHandler;
 
 namespace PhotoAlbum
 {
@@ -8,15 +8,17 @@ namespace PhotoAlbum
     {
         static void Main(string[] args)
         {
-            string albumId = string.Empty;
-
             Console.Write("Please enter an album ID: ");
-            albumId = Console.ReadLine();
+            string albumId = Console.ReadLine();
 
+            IValidationController validationController = new ValidationController();
+            string returnMessage = validationController.ValidateStringToInt(albumId);
 
-            //TODO: Try and find a way for this to not require the name space
-            IValidationHandler validationHandler = new ValidationHandler.ValidationHandler();
-            validationHandler.ValidateString(albumId, false);
+            Console.WriteLine(string.IsNullOrEmpty(returnMessage) 
+                                ? "IsValidString" 
+                                : returnMessage);
+
+            Console.ReadLine();
         }
     }
 }

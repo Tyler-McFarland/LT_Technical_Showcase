@@ -49,12 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IValidationHandler.cs" />
+    <Compile Include="Enums\ValidationEnums.cs" />
+    <Compile Include="Handlers\CanBeConvertedToIntHandler.cs" />
+    <Compile Include="Handlers\NullOrEmptyValidatorHandler.cs" />
+    <Compile Include="Interfaces\IValidationController.cs" />
+    <Compile Include="Interfaces\IValidationFactory.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValidationHandler\ValidationHandler.cs" />
-    <Compile Include="Validators\NullOrEmptyValidator.cs" />
+    <Compile Include="Controllers\ValidationController.cs" />
+    <Compile Include="Factory\ValidationFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -2,6 +2,6 @@
 {
     public interface IValidator
     {
-        bool Validate(string stringToValidate, bool CanBeEmpty);
+        string Validate(string stringToValidate);
     }
 }
