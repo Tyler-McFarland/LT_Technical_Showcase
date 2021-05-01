@@ -18,8 +18,8 @@ namespace PhotoAlbum
             {
                 case ValidationEnums.NullOrEmptyValidator: 
                     return new NullOrEmptyValidatorHandler();
-                case ValidationEnums.CanBeConvertedToInt:
-                    return new CanBeConvertedToIntHandler();
+                case ValidationEnums.CanBeConvertedToIntValidator:
+                    return new CanBeConvertedToIntValidatorHandler();
             }
 
             return null;

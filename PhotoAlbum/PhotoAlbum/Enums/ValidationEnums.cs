@@ -3,6 +3,6 @@
     public enum ValidationEnums
     {
         NullOrEmptyValidator = 1,
-        CanBeConvertedToInt = 2
+        CanBeConvertedToIntValidator = 2
     }
 }

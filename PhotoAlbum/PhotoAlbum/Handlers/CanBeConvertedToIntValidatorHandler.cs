@@ -3,7 +3,7 @@ using PhotoAlbum.Interfaces;
 
 namespace PhotoAlbum.Handlers
 {
-    public class CanBeConvertedToIntHandler : IValidator
+    public class CanBeConvertedToIntValidatorHandler : IValidator
     {
         public string Validate(string stringToValidate)
         {

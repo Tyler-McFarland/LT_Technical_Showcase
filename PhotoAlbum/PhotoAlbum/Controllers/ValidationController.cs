@@ -11,9 +11,9 @@ namespace PhotoAlbum.Controllers
             string messageToReturn = string.Empty;
             IValidationFactory validationFactory = new ValidationFactory();
 
-            foreach (string validatioName in Enum.GetNames(typeof(ValidationEnums)))
+            foreach (string validationName in Enum.GetNames(typeof(ValidationEnums)))
             {
-                IValidator handler = validationFactory.GetValidations(validatioName);
+                IValidator handler = validationFactory.GetValidations(validationName);
                 messageToReturn += handler.Validate(stringToValidate);
             }
             

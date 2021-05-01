@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ValidationEnums.cs" />
-    <Compile Include="Handlers\CanBeConvertedToIntHandler.cs" />
+    <Compile Include="Handlers\CanBeConvertedToIntValidatorHandler.cs" />
     <Compile Include="Handlers\NullOrEmptyValidatorHandler.cs" />
     <Compile Include="Interfaces\IValidationController.cs" />
     <Compile Include="Interfaces\IValidationFactory.cs" />
