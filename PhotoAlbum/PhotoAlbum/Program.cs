@@ -8,17 +8,30 @@ namespace PhotoAlbum
     {
         static void Main(string[] args)
         {
-            Console.Write("Please enter an album ID: ");
-            string albumId = Console.ReadLine();
+            bool isValidInput = false;
 
-            IValidationController validationController = new ValidationController();
-            string returnMessage = validationController.ValidateStringToInt(albumId);
+            while (!isValidInput)
+            {
+                Console.Write("Please enter an album ID: ");
+                string albumId = Console.ReadLine();
 
-            Console.WriteLine(string.IsNullOrEmpty(returnMessage) 
-                                ? "IsValidString" 
-                                : returnMessage);
+                IValidationController validationController = new ValidationController();
+                string returnMessage = validationController.ValidateStringToInt(albumId);
 
-            Console.ReadLine();
+                if (string.IsNullOrEmpty(returnMessage))
+                {
+                    isValidInput = true;
+                }
+                else
+                {
+                    Console.WriteLine(returnMessage);
+                    isValidInput = false;
+                }
+            }
+
+
+
+
         }
     }
 }
