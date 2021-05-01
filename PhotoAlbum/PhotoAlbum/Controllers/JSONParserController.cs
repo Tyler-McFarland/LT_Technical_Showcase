@@ -1,10 +1,11 @@
 ﻿using System;
+using PhotoAlbum.Interfaces;
 using PhotoAlbum.Models;
 using PhotoAlbum.Utilities;
 
 namespace PhotoAlbum.Controllers
 {
-    public class JSONParserController
+    public class JSONParserController : IJSONParserController
     {
         public Album[] GetAndParseJSON(string albumId)
         {
@@ -12,20 +13,19 @@ namespace PhotoAlbum.Controllers
             string jsonString = String.Empty;
             Album[] parsedObject = null;
 
-            GetJSON getJson = new GetJSON();
+            JSONUtility jsonUtility = new JSONUtility();
             try
             {
-                jsonString = getJson.GetJSONFromURL(url);
+                jsonString = jsonUtility.GetJSONFromURL(url);
             }
             catch (Exception e)
             {
                 throw e;
             }
 
-            ParseJSON parseJson = new ParseJSON();
             try
             {
-                parsedObject = parseJson.ParseJson(jsonString);
+                parsedObject = jsonUtility.ParseJson(jsonString);
             }
             catch (Exception e)
             {

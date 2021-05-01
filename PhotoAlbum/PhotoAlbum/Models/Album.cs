@@ -5,15 +5,19 @@ namespace PhotoAlbum.Models
     [JsonObject]
     public class Album
     {
+        [JsonProperty]
+        public string AlbumId { get; set; }
 
-        private string AlbumId { get; set; }
+        [JsonProperty]
+        public string Id { get; set; }
 
-        private string Id { get; set; }
+        [JsonProperty]
+        public string Title { get; set; }
 
-        private string Title { get; set; }
+        [JsonProperty]
+        public string Url { get; set; }
 
-        private string Url { get; set; }
-
-        private string ThumbnailUrl { get; set; }
+        [JsonProperty]
+        public string ThumbnailUrl { get; set; }
     }
 }

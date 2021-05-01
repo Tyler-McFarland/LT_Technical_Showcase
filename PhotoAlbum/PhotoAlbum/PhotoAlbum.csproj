@@ -53,7 +53,9 @@
     <Compile Include="Enums\ValidationEnums.cs" />
     <Compile Include="Handlers\CanBeConvertedToIntValidatorHandler.cs" />
     <Compile Include="Handlers\NullOrEmptyValidatorHandler.cs" />
+    <Compile Include="Interfaces\IFormatStringUtility.cs" />
     <Compile Include="Interfaces\IJSONParserController.cs" />
+    <Compile Include="Interfaces\IJSONUtility.cs" />
     <Compile Include="Interfaces\IValidationController.cs" />
     <Compile Include="Interfaces\IValidationFactory.cs" />
     <Compile Include="Interfaces\IValidator.cs" />
@@ -62,8 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Factory\ValidationFactory.cs" />
-    <Compile Include="Utilities\GetJSON.cs" />
-    <Compile Include="Utilities\ParseJSON.cs" />
+    <Compile Include="Utilities\FormatStringUtility.cs" />
+    <Compile Include="Utilities\JSONUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
