@@ -9,11 +9,12 @@ namespace PhotoAlbum
         static void Main(string[] args)
         {
             bool isValidInput = false;
+            string albumId = string.Empty;
 
             while (!isValidInput)
             {
                 Console.Write("Please enter an album ID: ");
-                string albumId = Console.ReadLine();
+                albumId = Console.ReadLine();
 
                 IValidationController validationController = new ValidationController();
                 string returnMessage = validationController.ValidateStringToInt(albumId);
@@ -29,7 +30,16 @@ namespace PhotoAlbum
                 }
             }
 
-
+            JSONParserController jsonParserController = new JSONParserController();
+            try
+            {
+                jsonParserController.GetAndParseJSON(albumId);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"A problem occurred when Getting and parsing the Json, please try again{Environment.NewLine}");
+                Main(null);
+            }
 
 
         }
