@@ -36,15 +36,21 @@ namespace PhotoAlbum_UnitTests.Controllers
                 .Expect(x => x.GetValidations(inputString))
                 .Repeat
                 .Twice()
+                .IgnoreArguments()
                 .Return(_mockValidator);
 
             _mockValidator
                 .Expect(x => x.Validate(inputString))
                 .Repeat
                 .Twice()
+                .IgnoreArguments()
                 .Return(returnString);
 
-            _validationController.ValidateStringToInt(inputString);
+            _validationController.ValidateStringToInt(inputString, _mockValidationFactory);
+
+            _mockValidationFactory.VerifyAllExpectations();
+            _mockValidator.VerifyAllExpectations();
+
         }
     }
 }
