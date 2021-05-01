@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using Microsoft.SqlServer.Server;
 using PhotoAlbum.Controllers;
 using PhotoAlbum.Interfaces;
 using PhotoAlbum.Models;
@@ -13,7 +15,12 @@ namespace PhotoAlbum
             #region Variables
             IValidationController validationController = new ValidationController();
             IJSONParserController jsonParserController = new JSONParserController();
-            FormatStringUtility formatString = new FormatStringUtility();
+            IFormatStringUtility formatString = new FormatStringUtility();
+            IValidationFactory validationFactory = new ValidationFactory();
+            IJSONUtility jsonUtility = new JSONUtility();
+            WebClient webClient = new WebClient();
+
+
             bool isValidInput = false;
             string albumId = string.Empty;
             string outputString = string.Empty;
@@ -27,7 +34,7 @@ namespace PhotoAlbum
                 Console.Write("Please enter an album ID: ");
                 albumId = Console.ReadLine();
 
-                string returnMessage = validationController.ValidateStringToInt(albumId);
+                string returnMessage = validationController.ValidateStringToInt(albumId, validationFactory);
 
                 if (string.IsNullOrEmpty(returnMessage))
                 {
@@ -36,6 +43,7 @@ namespace PhotoAlbum
                 else
                 {
                     Console.WriteLine(returnMessage);
+                    Console.WriteLine($"{Environment.NewLine}");
                     isValidInput = false;
                 }
             }
@@ -45,7 +53,7 @@ namespace PhotoAlbum
             //Get and parse the json for output
             try
             {
-                album = jsonParserController.GetAndParseJSON(albumId);
+                album = jsonParserController.GetAndParseJSON(albumId, jsonUtility, webClient);
             }
             catch (Exception)
             {
@@ -57,9 +65,17 @@ namespace PhotoAlbum
             #region OutputJSON
             //Format string for output
             outputString = formatString.FormatAlbumArray(album);
-            Console.WriteLine(string.IsNullOrEmpty(outputString)
-                ? $"No information returned for AlbumId: {albumId}"
-                : outputString);
+            if (string.IsNullOrEmpty(outputString))
+            {
+                Console.WriteLine($"No information returned for AlbumId: {albumId}");
+                Console.WriteLine($"{Environment.NewLine}");
+                Main(null);
+            }
+            else
+            {
+                Console.WriteLine(outputString);
+            }
+
             Console.ReadLine();
             #endregion
         }

@@ -8,15 +8,15 @@ namespace PhotoAlbum.Utilities
 {
     public class JSONUtility : IJSONUtility
     {
-        public string GetJSONFromURL(string url)
+        public string GetJSONFromURL(string url, WebClient webClient)
         {
             string jsonString = string.Empty;
 
             try
             {
-                using (WebClient web = new WebClient())
+                using (webClient)
                 {
-                    jsonString = web.DownloadString(url);
+                    jsonString = webClient.DownloadString(url);
                 }
             }
             catch (Exception e)

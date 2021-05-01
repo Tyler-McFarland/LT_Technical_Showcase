@@ -3,6 +3,6 @@
     public interface IValidationController
     {
         
-        string ValidateStringToInt(string albumId);
+        string ValidateStringToInt(string albumId, IValidationFactory validationFactory);
     }
 }

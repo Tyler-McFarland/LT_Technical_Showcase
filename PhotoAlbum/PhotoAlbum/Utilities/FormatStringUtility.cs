@@ -8,12 +8,12 @@ using PhotoAlbum.Models;
 
 namespace PhotoAlbum.Utilities
 {
-    class FormatStringUtility : IFormatStringUtility
+    public class FormatStringUtility : IFormatStringUtility
     {
         public string FormatAlbumArray(Album[] albums)
         {
             if (albums.Length == 0)
-                return String.Empty;
+                return string.Empty;
             
             StringBuilder formattedString = new StringBuilder();
 
