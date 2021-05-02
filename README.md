@@ -2,7 +2,7 @@
 LT Technical Showcase 4/29
 
 Instructions to run:
-  1. Clone code to your local visual studio
+  1. Clone code to your local visual studio or download zip
   2. Set Program.cs in the PhotoAlbum project to the startup (if it's not already)
   3. Run the program
 
