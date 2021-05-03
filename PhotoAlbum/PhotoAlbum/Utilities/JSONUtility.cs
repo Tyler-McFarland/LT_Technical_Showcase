@@ -12,16 +12,9 @@ namespace PhotoAlbum.Utilities
         {
             string jsonString = string.Empty;
 
-            try
+            using (webClient)
             {
-                using (webClient)
-                {
-                    jsonString = webClient.DownloadString(url);
-                }
-            }
-            catch (Exception e)
-            {
-                throw e;
+                jsonString = webClient.DownloadString(url);
             }
 
             return jsonString;
@@ -31,14 +24,7 @@ namespace PhotoAlbum.Utilities
         {
             Album[] parsedObject = null;
 
-            try
-            {
-                parsedObject = JsonConvert.DeserializeObject<Album[]>(jsonString);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            parsedObject = JsonConvert.DeserializeObject<Album[]>(jsonString);
 
             return parsedObject;
         }

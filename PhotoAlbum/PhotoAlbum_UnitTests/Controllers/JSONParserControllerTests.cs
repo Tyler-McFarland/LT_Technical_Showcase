@@ -40,5 +40,18 @@ namespace PhotoAlbum_UnitTests.Controllers
             _mockJsonUtility.AssertWasCalled(x => x.GetJSONFromURL(inputUrl, _mockWebClient));
             _mockJsonUtility.AssertWasCalled(x => x.ParseJson(returnJsonString));
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetAndParseJSON_ThrowsCaughtExpection_WhenExpectionThrown()
+        {
+            string inputAlbumId = "1";
+            string inputUrl = $"https://jsonplaceholder.typicode.com/photos?albumId={inputAlbumId}";
+            _mockJsonUtility
+                .Expect(x => x.GetJSONFromURL(inputUrl, _mockWebClient))
+                .Throw(new ArgumentException());
+
+            _jsonParserController.GetAndParseJSON(inputAlbumId, _mockJsonUtility, _mockWebClient);
+        }
     }
 }

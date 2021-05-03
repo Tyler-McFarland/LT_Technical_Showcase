@@ -12,23 +12,20 @@ namespace PhotoAlbum
     {
         static void Main(string[] args)
         {
-            #region Variables
+            string albumId = GetAndValidateInput();
+
+            Album[] album = GetAndParseJSON(albumId);
+
+            OutputJSON(album, albumId);
+        }
+
+        public static string GetAndValidateInput()
+        {
             IValidationController validationController = new ValidationController();
-            IJSONParserController jsonParserController = new JSONParserController();
-            IFormatStringUtility formatString = new FormatStringUtility();
             IValidationFactory validationFactory = new ValidationFactory();
-            IJSONUtility jsonUtility = new JSONUtility();
-            WebClient webClient = new WebClient();
-
-
             bool isValidInput = false;
             string albumId = string.Empty;
-            string outputString = string.Empty;
-            Album[] album = null;
-            #endregion
-
-            #region GetAndValidateInput
-            //Get User input for album and Validate
+            
             while (!isValidInput)
             {
                 Console.Write("Please enter an album ID: ");
@@ -47,24 +44,34 @@ namespace PhotoAlbum
                     isValidInput = false;
                 }
             }
-            #endregion
 
-            #region GetAndParseJSON
-            //Get and parse the json for output
+            return albumId;
+        }
+
+        public static Album[] GetAndParseJSON(string albumId)
+        {   
             try
             {
-                album = jsonParserController.GetAndParseJSON(albumId, jsonUtility, webClient);
+                IJSONParserController jsonParserController = new JSONParserController();
+                IJSONUtility jsonUtility = new JSONUtility();
+                WebClient webClient = new WebClient();
+
+                Album[] album = jsonParserController.GetAndParseJSON(albumId, jsonUtility, webClient);
+                return album;
             }
             catch (Exception)
             {
                 Console.WriteLine($"A problem occurred when Getting and parsing the Json, please try again{Environment.NewLine}");
                 Main(null);
+                return null;
             }
-            #endregion
+        }
 
-            #region OutputJSON
-            //Format string for output
-            outputString = formatString.FormatAlbumArray(album);
+        public static void OutputJSON(Album[] album, string albumId)
+        {
+            IFormatStringUtility formatString = new FormatStringUtility();
+            string outputString = formatString.FormatAlbumArray(album);
+            
             if (string.IsNullOrEmpty(outputString))
             {
                 Console.WriteLine($"No information returned for AlbumId: {albumId}");
@@ -77,7 +84,6 @@ namespace PhotoAlbum
             }
 
             Console.ReadLine();
-            #endregion
         }
     }
 }

@@ -17,14 +17,6 @@ namespace PhotoAlbum.Controllers
             try
             {
                 jsonString = jsonUtility.GetJSONFromURL(url, webClient);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-
-            try
-            {
                 parsedObject = jsonUtility.ParseJson(jsonString);
             }
             catch (Exception e)
