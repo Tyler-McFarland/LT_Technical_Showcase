@@ -1,0 +1,75 @@
+#+TITLE: Tyler McFarland Feedback
+
+
+* Application Code
+** General
+   - Try/Catch ::
+     If you are only throwing the caught exception, there isn't really a reason to have the try/catches. If you are able
+     buble those expections up, excluding the try catch blocks will make your code more readable. Try catches can be
+     useful tools for error handling. However, sometimes it is mor useful to let error lower in the code bubble up to a
+     higher catch.
+** Program.cs
+   - Regions ::
+     Regions are almost always a signe that your code is too complex and can be broken down into smaller parts. Looking
+     at the Program.cs file, that appears to be the case here. It seems like you may have relized this to some extent as
+     well. The descriptions that you gave your regions are allready formatted to be method names.
+
+   - Main ::
+     It is difficult to test the logic in the Main method. To help solve this problem, people will often create a class
+     that acts as their applications entry point and is called from Main. This helps to allow as much of the application
+     code to be unit tested.
+
+   - Recursive looping ::
+     I like the inclusion of using a recursion loop for the restarting the applicaiton.
+
+** ValidationController.cs
+   This code is rather simple and concise. This makes the logic easy to follow and understand.
+   
+** JSONParserController.cs
+   - Try/Catch ::
+     The try catches can be combined without any loss of logic. This will help the code be easier to understand/read.
+     
+** FormatStringUtility.cs
+   - Inconsistent var ::
+     This is a personal pet peeve. When a code base has inconsistent uses of var it makes parts of the code feel pulled
+     from another source. I know that being able to copy/paste code from sites like StackOverlow is sommething that
+     everyone does from time to time. However, I think that it is important for the developer to still manipulate that
+     code to match the codebase.
+
+* Test Code
+** General
+   - Summary Comments ::
+     Personally I don't like Summary comments. They do have their uses if your are creating documentation off of them.
+     However, that isn't the case here. It also seems weird that they are only included on the tests. I am not sure if
+     that is due to some sort of autogeneration from Visual Studio.
+     
+   - Mocking ::
+     I really like that you used Mocks for testing. This is one of the reason that using interfaces and passing in
+     dependencies can be useful, and it is nice to see that utilized and highlighted.
+
+   - Random Test Values ::
+     Using random values for your test input is a great way to increase the coverage of you tests. This allows you
+     to passively test a wider ranger of values and puts the emphasis on where the values come from instead of the value
+     itself. This is especially valuable when working with mocks and dependencies.
+
+   - Missing Coverage ::
+     There aren't any tests that cover the logic happening in the Main method. This is likely due to the issues with
+     trying to test static methods. extracting some of that logic will make adding in that coverage easier.
+
+** ValidationControllerTests.cs
+   - IgnoreArguments ::
+     It is a good habit to try and avoid ignoring the parameters that are sent to your mocks. There are times where it
+     is needed, however, your tests become strong with strong assertions. It does require more work and setup to get
+     this to work. I believe that extra work is worth the benefit of safer functions. Your test is actually setup with
+     inputs that would break your code. Your test is specifying that you pass 'inputString' to 'GetValidations'. This
+     is not what your logic does and seems like it would actually break the application if that was passed through.
+
+
+** JSONParserTests.cs
+   - Try/Catch ::
+     In the feedback for the application code I mentioned that the try/catch isn't need if you are just throwing the
+     caught error. However, if you do have the try/catch block it is a good idea to have unit tests that will verify
+     you are able to catch the expection.
+
+     - Note ::
+       I did not yet get to the JSONParserTests to see that you already have an example of checking expections.
